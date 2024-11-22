@@ -27,15 +27,13 @@ body {
 
 /* Main Container */
 .container {
-  display: flex;
-  flex-wrap: wrap; /* Allows responsiveness */
-  width: 90%;
-  max-width: 1200px;
-  background: #ffffff;
-  padding: 20px;
+  display: flex; /* Enables row layout */
+  flex-direction: row; /* Ensures children are aligned in a row */
+  gap: 20px; /* Adds spacing between the form and task list sections */
+  margin: 0 auto; /* Centers the container */
+  max-width: 1200px; /* Sets a maximum width for responsiveness */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  gap: 20px;
 }
 
 /* Form Section */
@@ -44,6 +42,7 @@ body {
   min-width: 400px; /* Minimum width for responsiveness */
   padding: 20px;
   border-right: 2px solid #f0f0f0; /* Divider between sections */
+  box-sizing: border-box; /* Includes padding and border in width calculation */
 }
 
 form {
@@ -90,10 +89,10 @@ button[type='submit']:hover {
 
 /* Task List Section */
 .task-list-container {
-  flex: 2; /* Takes remaining space */
+  flex: 2; /* Takes the remaining space */
   min-width: 300px; /* Minimum width for responsiveness */
   padding: 20px;
-  
+  box-sizing: border-box;
 }
 
 ul {
@@ -165,4 +164,8 @@ li button:last-child:hover {
   background-color: #c82333;
 }
 
-
+.task-list-container p{
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+}

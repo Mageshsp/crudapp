@@ -60,27 +60,30 @@ const App = () => {
       </div>
       <div className="task-list-container">
         <h1>Task List</h1>
-        {/*Displaying the list of tasks*/}
-        <ul>
-          {tasks.map((task) => (
-            <li key={task._id}>
-              <strong style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
-                {task.name}
-              </strong>
-              <p>{task.description}</p>
-              <button
-                onClick={() => handleCompleteTask(task._id)}
-                data-completed={task.completed}
-                className="completeBtn"
-              >
-                {task.completed ? 'Undo' : 'Complete'}
-              </button>
-              <button onClick={() => handleDeleteTask(task._id)}>Delete</button>
-            </li>
-
-          ))}
-        </ul>
+        {tasks.length === 0 ? (
+          <p>Today there is no task assigned.</p>
+        ) : (
+          <ul>
+            {tasks.map((task) => (
+              <li key={task._id}>
+                <strong style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
+                  {task.name}
+                </strong>
+                <p>{task.description}</p>
+                <button
+                  onClick={() => handleCompleteTask(task._id)}
+                  data-completed={task.completed}
+                  className="completeBtn"
+                >
+                  {task.completed ? 'Undo' : 'Complete'}
+                </button>
+                <button onClick={() => handleDeleteTask(task._id)}>Delete</button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
+
     </div>
   );
 };
