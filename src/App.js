@@ -6,6 +6,7 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
   const [taskName, setTaskName] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
+  const [taskDate, setTaskDate] = useState('');
 
   // Fetch tasks from the backend
   useEffect(() => {
@@ -15,11 +16,12 @@ const App = () => {
   // Add a new task
   const handleAddTask = async (e) => {
     e.preventDefault();
-    const newTask = { name: taskName, description: taskDescription };
+    const newTask = { name: taskName, description: taskDescription, date: taskDate, };
     const res = await axios.post('http://localhost:5000/tasks', newTask);
     setTasks([...tasks, res.data]);
     setTaskName('');
     setTaskDescription('');
+    setTaskDate('');
   };
 
   // Delete a task
@@ -55,6 +57,12 @@ const App = () => {
             onChange={(e) => setTaskDescription(e.target.value)}
             required
           ></textarea>
+          <input
+            type="date"
+            value={taskDate}
+            onChange={(e) => setTaskDate(e.target.value)}
+            required
+          />
           <button type="submit">Add Task</button>
         </form>
       </div>
@@ -70,6 +78,7 @@ const App = () => {
                   {task.name}
                 </strong>
                 <p>{task.description}</p>
+                <p><em>Due Date: {new Date(task.date).toLocaleDateString()}</em></p>
                 <button
                   onClick={() => handleCompleteTask(task._id)}
                   data-completed={task.completed}

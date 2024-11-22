@@ -87,6 +87,21 @@ button[type='submit']:hover {
   background-color: #554cc2;
 }
 
+input[type="date"] {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input[type="date"]:focus {
+  border-color: #6c63ff;
+}
+
+
 /* Task List Section */
 .task-list-container {
   flex: 2; 
@@ -112,7 +127,6 @@ li {
   border-radius: 4px;
   margin-bottom: 10px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  
 }
 
 li strong {
@@ -167,3 +181,16 @@ li button:last-child:hover {
   font-size: 20px;
   text-align: center;
 }
+
+.task-list-container ul li p em {
+  color: #6c63ff; 
+  font-size: 0.9rem; 
+  font-style: italic; 
+  margin-top: 5px; 
+  display: block;
+}
+
+.task-list-container ul li p em:hover {
+  color: #554cc2; 
+}
+
